@@ -1,0 +1,89 @@
+<div style='height:100%'>
+  <div fxLayout="column wrap" fxFlex fxFlexFill>
+    <header fxFlex='8'>
+      <div class="header-main">
+        <div class="logo" fxFlex="7">Logo</div>
+        <div class="header-left">
+          <div>
+            <button mat-icon-button [matMenuTriggerFor]="menu" title="User Profile"
+              style="outline: 0; height: 100%;width: 100%;">
+              <mat-icon style="display: block;">account_circle</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" color="primary" [overlapTrigger]="false">
+              <button mat-menu-item style="outline: 0;">
+                <mat-icon>account_circle</mat-icon>
+                <span>{{'Naveena Jyothi'}}</span>
+              </button>
+              <button mat-menu-item (click)="logout()" style="outline: 0;">
+                <mat-icon>exit_to_app</mat-icon>
+                <span l10n-attribute l10nTranslate>Log Out</span>
+              </button>
+            </mat-menu>
+          </div>
+          <div class="ring">
+            <button mat-icon-button [matMenuTriggerFor]="notiMenu" (menuClosed)="onNotiMenuClosed()" #noti="matMenuTrigger" title="Notifications" style="outline: 0; height: 100%;width: 100%;">
+              <mat-icon style="display: block;" [matBadge]="count" [matBadgeHidden]="noti.menuOpen || count === 0" matBadgeColor="warn">notifications</mat-icon>
+              <span class="cdk-visually-hidden">
+              </span>
+            </button>
+            <mat-menu #notiMenu="matMenu" color="primary" [overlapTrigger]="false">
+              <button mat-menu-item style="outline: 0;" *ngFor="let noti of notifications">
+                <span>{{noti}}</span>
+              </button>
+            </mat-menu>
+          </div>
+          <div class="help">
+            <a target="_blank" href="/assets/help.pdf">
+              <mat-icon style="display: block;">help</mat-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="bounds" fxFlex='92'>
+      <div class="content" fxLayout="row wrap" fxFlex fxFlexFill>
+        <div [fxFlex]="sidenavWidth" class="nav">
+          <mat-sidenav #entitiesMenu class="items-sidenav" mode='side' [class.open]="navOpen" (mouseover)="navOpen=true"
+            (mouseout)="navOpen=false">
+            <div class="sidenav-item-container">
+              <a class="sidenav-item mat-ripple" fxlayout="row" fxlayoutalign="start center" routerLink="./subhome">
+                <span class="name">Home</span>
+                <span fxflex class="flex-span"></span>
+                <mat-icon mat-list-icon>link</mat-icon>
+              </a>
+            </div>
+            <div class="sidenav-item-container">
+              <a class="sidenav-item mat-ripple" fxlayout="row" fxlayoutalign="start center" routerLink="./dashboard">
+                <span class="name">Dashboard</span>
+                <span fxflex class="flex-span"></span>
+                <svg class="dashboard"></svg>
+                <!-- <mat-icon mat-list-icon>link</mat-icon> -->
+              </a>
+            </div>
+            <div class="sidenav-item-container">
+              <a class="sidenav-item mat-ripple" fxlayout="row" fxlayoutalign="start center" routerLink="./reports">
+                <span class="name">Reports</span>
+                <span fxflex class="flex-span"></span>
+                <mat-icon mat-list-icon>link</mat-icon>
+              </a>
+            </div>
+            <div class="sidenav-item-container">
+              <a class="sidenav-item mat-ripple" fxlayout="row" fxlayoutalign="start center" routerLink="./history">
+                <span class="name">History</span>
+                <span fxflex class="flex-span"></span>
+                <mat-icon mat-list-icon>link</mat-icon>
+              </a>
+            </div>
+          </mat-sidenav>
+        </div>
+        <div [fxFlex]="mainbodyWidth" class="sec2" style=" z-index: 9">
+
+          <router-outlet></router-outlet>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

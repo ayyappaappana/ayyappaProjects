@@ -1,0 +1,60 @@
+<div fxFlex fxLayout="column wrap" fxFlexFill class="history">
+  <div fxFlex="10" class="tabsmenu">
+    <div class='tab' *ngFor="let tab of tabs; let isFirst = first; let index = index">
+      <button mat-menu-item [routerLink]='tab?.route' [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:
+        true}">
+        {{tab.name}}
+      </button>
+    </div>
+  </div>
+  <div fxFlex="20" class="searchcontainer">
+    <div class="vehicletype">
+      <mat-label class="lblClass">Vehicle type</mat-label>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="selectedvehicletype">
+          <mat-select-trigger>{{selectedvehicletype}}</mat-select-trigger>
+          <mat-option *ngFor="let source of ['car','bus']" [value]="source">
+            {{source}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="Reporttype">
+      <mat-label class="lblClass">Report type</mat-label>
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="selectedreporttype">
+          <mat-select-trigger>{{selectedreporttype}}</mat-select-trigger>
+          <mat-option *ngFor="let source of ['Four Wheeler','Two wheeler']" [value]="source">
+            {{source}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="datefrom">
+      <mat-label class="lblClass">Date From</mat-label>
+      <mat-form-field appearance="outline">
+        <input #fromdate matInput [matDatepicker]="picker1" placeholder="From Date" [formControl]="'date'">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="dateto">
+      <mat-label class="lblClass">Date To</mat-label>
+      <mat-form-field appearance="outline">
+        <input #todate matInput [matDatepicker]="picker2" placeholder="to Date" [formControl]="'date'">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button class="reset btnReset" (click)="onResetFilter()">Reset Filter</button>
+    <button class="btn btn-primary reportsBtn" (click)="onSearch($event)">Search
+    </button>
+  </div>
+  <div class="search" fxFlex="10" >
+    <mat-icon>search</mat-icon>
+    <input type="text" placeholder="Search" #searchInput (change)="onSearch($event)">
+  </div>
+  <div fxFlex=60 style="padding-top: 10px; width: 99%; height: 71vh;">
+    <router-outlet style="height: 100%; width: 100%;"></router-outlet>
+  </div>
+</div>

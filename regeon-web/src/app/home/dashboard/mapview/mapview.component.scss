@@ -1,0 +1,242 @@
+.map-component {
+  overflow   : hidden;
+  width      : 100%;
+  position   : relative;
+  user-select: none;
+  height     : auto;
+  margin     : 0;
+}
+
+.mapContainer {
+  width  : 100%;
+  height : 100%;
+  padding: 0;
+}
+
+.overlay {
+  width           : 25%;
+  height          : 6%;
+  position        : absolute;
+  /* top          : 100%; */
+  /* left         : 0; */
+  /* bottom       : 0; */
+  background-color: rgb(255, 255, 255);
+  z-index         : 1000;
+  /* margin-left  : 75%; */
+  margin-left     : 70%;
+  margin-top      : 2%;
+}
+
+.showdeatilsHeader {
+  font-size: 15px;
+  float    : left;
+  /* margin: 8px; */
+}
+
+.showdetailssubinfo {
+  float         : left;
+  clear         : both;
+  /* margin-left: 9px; */
+  margin-top    : -22px;
+  font-size     : 11px;
+}
+
+.dot {
+  height          : 11px;
+  width           : 11px;
+  background-color: red;
+  border-radius   : 50%;
+  display         : inline-block;
+  margin-right    : 4px;
+}
+
+.detailsClass {
+  background-color: red;
+  width           : 97%;
+  height          : 90%;
+  margin-top      : 7px;
+  margin-left     : 5px;
+}
+
+img {
+  width : 100%;
+  height: 100%;
+}
+
+.map-full-component {
+  max-width: 100% !important;
+}
+
+.searchbar {
+  font-size : 17px;
+  border    : none;
+  text-align: left;
+  margin    : 4px;
+}
+
+.search {
+  background-image   : url('../../../../assets/search.svg');
+  background-position: center;
+  background-repeat  : no-repeat;
+  background-size    : contain;
+  margin             : 4px;
+  width              : 30px;
+  color              : white;
+}
+
+.geomap {
+  background-image: url('../../../../assets/map.svg');
+}
+
+.reportImg {
+  background-image   : url('../../../../assets/upload.svg');
+  background-position: center;
+  background-repeat  : no-repeat;
+  background-size    : contain;
+  width              : 20%;
+  height             : 19px;
+  cursor             : pointer;
+}
+
+.geo {
+  background-position: center;
+  background-repeat  : no-repeat;
+  background-size    : contain;
+  width              : 20px;
+  cursor             : pointer;
+}
+
+.geonavigate {
+  background-image: url('../../../../assets/navigation.svg');
+
+}
+
+.geofence {
+  background-image: url('../../../../assets/geofence.svg');
+}
+
+#search-button {
+  width     : 100%;
+  background: white;
+  border    : none;
+  height    : 100%;
+}
+
+#search-button svg {
+  width : 16px;
+  height: 16px;
+}
+
+*:focus {
+  outline: none;
+}
+
+.details {
+
+  margin    : 7px;
+  background: #FFFFFF;
+}
+
+.reportsBtn {
+  width        : 45%;
+  margin-top   : 2%;
+  margin-bottom: 1%;
+  line-height  : 18px;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.circle {
+  width        : 30px;
+  height       : 30px;
+  border-radius: 50%;
+  font-size    : 12px;
+  color        : #fff;
+  text-align   : center;
+  border: 1px solid #FFF;
+  box-shadow: 0 0 3px #495057;
+}
+
+.totalLegend{
+  line-height  : 22px;
+}
+.normalLegend{
+  line-height  : 28px;
+}
+
+.selectedcircle {
+  width        : 30px;
+  height       : 30px;
+  border-radius: 50%;
+  font-size    : 12px;
+  color        : #fff;
+  text-align   : center;
+  position: absolute;
+  top: -6px;
+  right: 27px;
+  border: 1px solid #FFF;
+  box-shadow: 0 0 3px #495057;
+}
+
+.active{
+  background-color: green;
+}
+.inactive{
+  background-color: red;
+}
+.idle{
+  background-color: orange;
+}
+.all{
+  background-color:blue;
+}
+
+// ::ng-deep .mat-select-panel {
+//   margin-left: 75px;
+//   min-width  : 40px !important;
+// }
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .cdk-overlay-connected-position-bounding-box {
+
+  .cdk-overlay-pane {
+    padding-left: 33px !important;
+
+    .mat-select-panel {
+      min-width : 10px !important;
+      background: transparent;
+      .mat-selected {
+        background: transparent;
+      }
+      .mat-option{
+        height: 2.5em;
+      }
+    }
+
+    .legend {
+      box-shadow: none;
+      position: absolute;
+      left: 9px;
+      top: -11px;
+    }
+  }
+}
+
+::ng-deep .mat-select-arrow {
+  border-left        : 15px solid transparent !important;
+  border-right       : none !important;
+  border-top         : 15px solid transparent !important;
+  border-image-source: url('../../../../assets/doublearrow.png') !important;
+  border-image-repeat: stretch !important;
+  transform: rotate(180deg);
+}
+
+.geoRef {
+  background: none;
+  border    : none;
+}

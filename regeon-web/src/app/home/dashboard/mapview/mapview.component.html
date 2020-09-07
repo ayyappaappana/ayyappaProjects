@@ -1,0 +1,105 @@
+<div class="mapContainer" fxLayout="row">
+  <div class="map-component" [ngClass]="{
+      'map-full-component':!showDetails}" leaflet [leafletOptions]="options" [leafletFitBounds]="fitBounds"
+    (leafletMapReady)="onMapReady($event)" fxFlex="75">
+  </div>
+  <div class="details" *ngIf='showDetails' fxFlex='25'>
+    <div fxLayout="column" fxFlex>
+      <div fxFlex="8">
+        <div class="showdeatilsHeader" style="padding: 3px 0px 0px 6px;">
+          <span class="dot"></span>
+          <label class="bold">TN41AT4287</label>
+        </div>
+        <label class="showdetailssubinfo" style="margin-left: 25px;">Fire Truck</label>
+      </div>
+      <div fxFlex="10">
+        <div fxFlex="row" fxFlex fxLayoutAlign="space-evenly center">
+          <div (click)="addGeoFence()"><svg class="geo geomap"></svg></div>
+
+          <div (click)="addRoute()"><svg class="geo geonavigate"></svg></div>
+          <div (click)="addGeo()"><svg class="geo geofence"></svg></div>
+        </div>
+      </div>
+      <div fxFlex="30">
+        <div fxLayout="column" fxFlex>
+          <div fxFlex="33" style="margin: 0% 10% ;">
+            <label class="showdeatilsHeader bold">Home Visakhapatnam</label>
+            <label class="showdetailssubinfo">{{currentDate}}</label>
+          </div>
+          <div fxFlex="33" style="margin: 0% 10% ;">
+            <label class="showdeatilsHeader bold ">Office Visakhapatnam</label>
+            <label class="showdetailssubinfo">{{currentDate}}</label>
+          </div>
+          <div fxFlex="33" style="margin: 0% 10% ;">
+            <div fxLayout="row" fxFlex>
+              <div fxFlex="50" style="margin: 2%;">
+                <label class="showdeatilsHeader bold">Average Speed</label>
+                <label class="showdetailssubinfo">{{'24 Km/h'}}</label>
+              </div>
+              <div fxFlex="50" style="margin: 2%;">
+                <label class="showdeatilsHeader bold">Distance</label>
+                <label class="showdetailssubinfo">{{'51.22 Kms'}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="9">
+        <div>
+          <button class="btn btn-primary reportsBtn"><svg class="reportImg" style="float: right;"></svg>View
+            Report</button>
+        </div>
+      </div>
+      <div fxFlex="33" style="background-color:lightpink;">
+        <div #chartContainer style="min-width: 310px;height: 260px;"></div>
+      </div>
+    </div>
+  </div>
+  <div class='overlay' #searchcontainer fxFlex fxLayout="row">
+    <div fxFlex='60'>
+      <input style="cursor: pointer;" type="text" class="searchbar" placeholder="Search.." name="search">
+    </div>
+    <div fxFlex='18' style="background-color: blue;">
+      <button id="search-button">
+        <!-- <svg id="search-icon" class="search-icon" viewBox="0 0 24 24">
+            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+        </svg> -->
+        <svg class="search"></svg>
+      </button>
+    </div>
+    <div fxFlex='22' style="background-color:white; display: flex;">
+      <mat-form-field style="width:100%;margin-top:-17%;text-align: center;">
+        <mat-select (selectionChange)="onSelectLegend($event)" disableOptionCentering panelClass="legend"
+          [(value)]="selected" style="border-left: 1px solid gray; padding-right: 8px;">
+          <mat-select-trigger [ngClass]="{
+            'active': getStatus(selected) === 'Active',
+            'inactive': getStatus(selected) === 'Inactive',
+            'all': getStatus(selected) === 'All',
+            'idle': getStatus(selected) === 'Idle',
+            'selectedcircle': true,
+            'totalLegend':getStatus(selected) === 'All',
+            'normalLegend':getStatus(selected) !== 'All'
+         }">{{selected}}<span style="position: absolute;
+         right: 5px;
+         top: 9px;
+         font-size: 10px;" *ngIf="getStatus(selected) === 'All'">total</span></mat-select-trigger>
+          <mat-option *ngFor="let legend of legends" [value]="legend.total">
+            <!-- <mat-icon class="geo geofence"></mat-icon> -->
+            <div [ngClass]="{
+              'active': legend.status === 'Active',
+              'inactive': legend.status === 'Inactive',
+              'all': legend.status === 'All',
+              'idle': legend.status === 'Idle',
+              'circle': true,
+              'totalLegend':legend.status === 'All',
+              'normalLegend':legend.status !== 'All'
+           }">{{legend.total}}<span style="position: absolute;
+           right: 20px;
+           top: 15px;
+           font-size: 10px;" *ngIf="legend.status === 'All'">total</span></div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>

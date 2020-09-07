@@ -1,0 +1,72 @@
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.dotsmenu {
+  border          : 0;
+  background-color: white;
+  outline         : 0;
+}
+
+::ng-deep .table-container {
+  width: 100%;
+
+  .ngx-datatable {
+    box-shadow: none;
+  }
+
+  .table {
+    width     : 100%;
+    height    : 100%;
+    max-height: 38vh;
+
+    .datatable-header {
+      border: none;
+
+      .datatable-header-cell-label {
+        font-weight: bold;
+        color      : #343a40;
+      }
+    }
+
+    .datatable-row-wrapper {
+      border: 0.2px solid lightgray;
+      height: 28px;
+
+      .datatable-body-cell-label {
+        line-height: 0.625;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+
+
+::ng-deep {
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px !important;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background   : #bdaeae !important;
+    border-radius: 10px !important;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #716565 !important;
+  }
+
+
+}

@@ -1,0 +1,46 @@
+<div style=" width: 100%;height: 100%;">
+  <ngx-datatable  #dataTable class='material' [rows]="rows" [columnMode]="'force'"
+    [headerHeight]="'50'" [scrollbarV]="false"  [footerHeight]="'50'" [rowHeight]="'45'"  [limit]="limit" [count]="true"  [draggable]="false"  [selected]="selected"
+    [selectionType]="SelectionType.checkbox"
+    [selectAllRowsOnPage]="false"
+    [displayCheck]="displayCheck"
+     [selectAllRowsOnPage]="false"
+    (select)="onSelect($event)"
+     >
+     <ngx-datatable-column
+            [width]="30"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            [headerCheckboxable]="true"
+            [checkboxable]="true"
+          >
+          </ngx-datatable-column>
+     <ngx-datatable-column  *ngFor="let col of columns"  [name]="col.name" [draggable]="true" [flexGrow]="0.5"
+     [resizeable]="true">
+      <ng-template let-row="row" *ngIf="col.name !=='Documents'"  ngx-datatable-cell-template>
+        {{row[col.prop]}}
+      </ng-template>
+      <ng-template let-value="value" let-row="row" *ngIf="col.name==='Documents'" ngx-datatable-cell-template>
+        <span>
+          <button  class="alignBtn btnReport" (click)='onSelectRed(row)'><svg class="reportImg"></svg></button>
+          <button *ngIf="!isHistoric"  class="btnReport" (click)='onSelectBlue(value)'><svg class="reportImg"></svg></button>
+          <button *ngIf="isHistoric"  class="btnReport" (click)='onSelectBlue(value)'><svg class="reportImg1"></svg></button>
+        </span>
+      </ng-template>
+    </ngx-datatable-column>
+
+  </ngx-datatable>
+</div>
+<!-- <ng-template #buttonTemplate let-row="row" let-value="value">
+  <button class="btn btn-transparent" (click)='onSelect(row)'><svg class="reportImg"></svg>
+  </button>
+  <button class="btn btn-transparent" (click)='onSelect(row)'><svg class="reportImg"></svg>
+  </button>
+</ng-template> -->
+<!-- <ng-template #checkboxTemplate let-row="row" let-value="value">
+  <input type="checkbox">
+</ng-template> -->
+
+
